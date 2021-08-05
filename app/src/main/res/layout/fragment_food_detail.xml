@@ -2,7 +2,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragment.FoodDetailFragment">
 
     <LinearLayout
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Origin"
+            android:text="Italia"
             android:fontFamily="cursive"
             android:textSize="30sp"
             android:layout_gravity="center_horizontal"/>
@@ -38,10 +40,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Ingredients"
+            android:text="Ingredients"
             android:fontFamily="cursive"
             android:textSize="30sp"
             android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvIngredient"
+            android:text="first item\n second item\n third item"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="false"/>
 
         <!--RecyclerView-->
 
@@ -52,6 +62,13 @@
             android:hint="How to cook"
             android:fontFamily="cursive"
             android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="first item\n second item\n third item"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="false"/>
 
         <!--Embedded youtube video-->
 
