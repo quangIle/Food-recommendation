@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.airbnb.paris.extensions.style
 import com.example.foodrecommendation.R
@@ -24,8 +23,7 @@ class FoodListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
     ): View? {
-        binding=DataBindingUtil.inflate<FragmentFoodListBinding>(inflater,
-        R.layout.fragment_food_list,container,false)
+        binding = FragmentFoodListBinding.inflate(layoutInflater, container, false)
 
         //Create Food List View Programmatically
         var listFood = mutableListOf<Int>(

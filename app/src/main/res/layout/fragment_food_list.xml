@@ -1,83 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.FoodListFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragment.FoodListFragment"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/insta"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:backgroundTint="@color/insta"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_icon" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="4"
+            android:hint="Search your food" />
+
+        <Spinner
+            android:id="@+id/province"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:entries="@array/province_location"
+            android:prompt="@string/choose_province" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Food Recomendation"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/layout_food_rec"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/insta">
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/search_icon"
-                android:backgroundTint="@color/insta"
-                android:scaleType="fitCenter"
-                android:layout_weight="0"
-                android:layout_margin="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:hint="Search your food"
-                android:layout_margin="5dp"/>
-            <Spinner
-                android:id="@+id/province"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:entries="@array/province_location"
-                android:prompt="@string/choose_province"
-                android:layout_margin="5dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
         </LinearLayout>
+    </HorizontalScrollView>
 
-        <TextView
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Food cooking book"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout_book_rec"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:layout_margin="10dp"
-            android:text="Food Recomendation"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/layout_food_rec">
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:text="Food cooking book"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/layout_book_rec">
-
-            </LinearLayout>
-        </HorizontalScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
-    </LinearLayout>
-</layout>
+</LinearLayout>
 
