@@ -2,6 +2,8 @@
     <string name="app_name">Food Recommendation</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Button_Spin">Spin Me</string>
+    <string name="wheelFragmentTitle">Choose your food randomly !</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
