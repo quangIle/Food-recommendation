@@ -1,6 +1,5 @@
 package com.example.foodrecommendation.fragment
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -8,9 +7,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.bluehomestudio.luckywheel.WheelItem
-import java.lang.ClassCastException
 
 class DeleteDialogFragment(cur_wheelItems: MutableList<WheelItem>) : DialogFragment() {
     private var wheelItems: MutableList<WheelItem> = ArrayList()
