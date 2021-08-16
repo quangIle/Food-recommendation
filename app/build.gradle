@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-        dataBinding = true
+        viewBinding = true
     }
 
 
@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     def nav_version = '2.3.5'
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

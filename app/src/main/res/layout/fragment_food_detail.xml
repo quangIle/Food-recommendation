@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:background="#D0E37F"
+    tools:context=".fragment.FoodDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/spaghetti_0"
+                android:scaleType="fitXY"
+                android:background="#D0E37F"
+                android:id="@+id/tvFoodImage" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spaghetti"
+            android:textSize="80sp"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:textColor="#4B0082"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Origin"
+            android:text="Italia"
+            android:fontFamily="cursive"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients"
+            android:fontFamily="cursive"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvIngredient"
+            android:textSize="20sp"
+            android:text="first item\n second item\n third item"
+            android:layout_gravity="start"
+            android:textColor="@color/black"
+            android:singleLine="false"/>
+
+        <!--RecyclerView-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="How to cook"
+            android:fontFamily="cursive"
+            android:layout_gravity="end"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="first item\n second item\n third item"
+            android:id="@+id/tvCookSteps"
+            android:layout_gravity="end"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:singleLine="false"/>
+
+        <!--Embedded youtube video-->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:videoId="sXcOYwQLeS0"
+            app:autoPlay="true"
+            app:showFullScreenButton="true"
+            android:id="@+id/youtubeVideo"
+            android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

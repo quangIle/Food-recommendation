@@ -3,24 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/testFragment">
+    app:startDestination="@id/foodDetailFragment">
 
     <fragment
         android:id="@+id/introductionFragment"
         android:name="com.example.foodrecommendation.fragment.IntroductionFragment"
         android:label="fragment_introduction"
-        tools:layout="@layout/fragment_introduction" >
-        <action
-            android:id="@+id/action_introductionFragment_to_testFragment"
-            app:destination="@id/testFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_introduction" />
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.example.foodrecommendation.fragment.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
-        <action
-            android:id="@+id/action_testFragment_to_introductionFragment"
-            app:destination="@id/introductionFragment" />
-    </fragment>
+        android:id="@+id/foodDetailFragment"
+        android:name="com.example.foodrecommendation.fragment.FoodDetailFragment"
+        android:label="fragment_food_detail"
+        tools:layout="@layout/fragment_food_detail" />
 </navigation>
