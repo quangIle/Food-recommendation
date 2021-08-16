@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Food Recommendation</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="choose_province">Choose your location</string>
+    <string-array name="province_location">
+        <item>Gia Lai</item>
+        <item>Ho Chi Minh City</item>
+        <item>Vinh Long</item>
+        <item>Vung Tau</item>
+        <item>Can Tho</item>
+        <item>Ca Mau</item>
+    </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

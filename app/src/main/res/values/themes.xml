@@ -13,4 +13,29 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="CustomizedButton">
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="CustomizedTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|bottom</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+    <style name="FoodBookStyle">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:clickable">true</item>
+    </style>
 </resources>
