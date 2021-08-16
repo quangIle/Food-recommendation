@@ -35,9 +35,8 @@
                 android:entries="@array/province_location"
                 android:prompt="@string/choose_province"
                 android:layout_margin="5dp"/>
-
-
         </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,67 +51,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/pho1"
-                        android:src="@drawable/pho01"
-                        style="@style/CustomizedButton"/>
-                    <TextView
-                        style="@style/CustomizedTextView"
-                        android:text="Phở"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/bunbohue1"
-                        android:src="@drawable/bunbohue01"
-                        style="@style/CustomizedButton"/>
-                    <TextView
-                        style="@style/CustomizedTextView"
-                        android:text="Bún Bò Huế"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/banhkhot1"
-                        android:src="@drawable/banhkhot01"
-                        style="@style/CustomizedButton"/>
-                    <TextView
-                        style="@style/CustomizedTextView"
-                        android:text="Bánh Khọt"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/bundaumamtom1"
-                        android:src="@drawable/bundaumamtom01"
-                        style="@style/CustomizedButton"/>
-                    <TextView
-                        style="@style/CustomizedTextView"
-                        android:text="Bún Đậu Mắm Tôm"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/comtam1"
-                        android:src="@drawable/comtam01"
-                        style="@style/CustomizedButton" />
-                    <TextView
-                        style="@style/CustomizedTextView"
-                        android:text="Cơm Tấm"/>
-                </LinearLayout>
+                android:orientation="horizontal"
+                android:id="@+id/layout_food_rec">
+
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -123,65 +64,16 @@
             android:textSize="20sp"
             android:layout_margin="10dp"
             android:text="Food cooking book"/>
+
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        style="@style/FoodBookStyle"
-                        android:src="@drawable/book1"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Vietnamese Street Food"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        style="@style/FoodBookStyle"
-                        android:src="@drawable/book2"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Vietnamese food any day: simple recipes for true, fresh flavors"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        style="@style/FoodBookStyle"
-                        android:src="@drawable/book3"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Into the Vietnamese Kitchen:  Treasured Foodways, Modern Flavors"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageButton
-                        style="@style/FoodBookStyle"
-                        android:src="@drawable/book4"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Vietnamese Home Cooking"/>
-                </LinearLayout>
+                android:orientation="horizontal"
+                android:id="@+id/layout_book_rec">
+
             </LinearLayout>
         </HorizontalScrollView>
 
