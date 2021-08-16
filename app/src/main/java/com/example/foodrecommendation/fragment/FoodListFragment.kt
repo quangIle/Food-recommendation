@@ -1,25 +1,21 @@
 package com.example.foodrecommendation.fragment
 
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
-import android.view.ContextThemeWrapper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.airbnb.paris.extensions.style
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodListBinding
-import android.util.Log.d as d1
 
 class FoodListFragment : Fragment() {
     private lateinit var binding: FragmentFoodListBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
