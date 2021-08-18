@@ -3,17 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/introductionFragment">
+    app:startDestination="@id/foodListFragment">
 
     <fragment
         android:id="@+id/introductionFragment"
         android:name="com.example.foodrecommendation.fragment.IntroductionFragment"
         android:label="fragment_introduction"
-        tools:layout="@layout/fragment_introduction" >
-        <action
-            android:id="@+id/action_introductionFragment_to_wheelFragment"
-            app:destination="@id/wheelFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_introduction" />
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.example.foodrecommendation.fragment.FoodDetailFragment"
@@ -29,4 +25,9 @@
         android:name="com.example.foodrecommendation.fragment.FoodListFragment"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodrecommendation.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

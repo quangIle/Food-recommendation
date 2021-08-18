@@ -45,12 +45,19 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03'
 
-    //firebase dependency
+    // Firebase dependency
+    // Firebase Authentication
     implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
     implementation "com.google.firebase:firebase-auth-ktx:21.0.1"
+    // Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    // Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
-    //end
+    // Firebase Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    // Declare the dependency for the Realtime Database library
+    implementation 'com.google.firebase:firebase-database-ktx'
+
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'com.airbnb.android:paris:1.7.3'
     def nav_version = '2.3.5'

@@ -15,11 +15,11 @@ import com.example.foodrecommendation.databinding.FragmentFoodListBinding
 class FoodListFragment : Fragment() {
     private lateinit var binding: FragmentFoodListBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFoodListBinding.inflate(layoutInflater, container, false)
-
         //Create Food List View Programmatically
         var listFood = mutableListOf<Int>(
             R.drawable.pho01,
@@ -32,7 +32,7 @@ class FoodListFragment : Fragment() {
             "Phở", "Bún Bò Huế", "Bánh Khọt", "Bún Đậu Mắm Tôm",
             "Cơm Tấm"
         )
-        for(i in 0..4){
+        for (i in 0..4) {
             var layout = LinearLayout(context)
             layout.style(R.style.LinearLayoutFoodRec)
             layout.orientation = LinearLayout.VERTICAL
@@ -62,7 +62,7 @@ class FoodListFragment : Fragment() {
             "Into the Vietnamese Kitchen:  Treasured Foodways, Modern Flavors",
             "Vietnamese Home Cooking"
         )
-        for(i in 0..3){
+        for (i in 0..3) {
             var layout = LinearLayout(context)
             layout.style(R.style.LinearLayoutFoodRec)
             layout.orientation = LinearLayout.VERTICAL
@@ -80,8 +80,6 @@ class FoodListFragment : Fragment() {
         }
         return binding.root
     }
-
-
 
 
 }

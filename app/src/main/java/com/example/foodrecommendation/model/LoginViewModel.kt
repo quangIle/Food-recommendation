@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-
 class LoginViewModel : ViewModel() {
     class FirebaseUserLiveData : LiveData<FirebaseUser?>() {
         private val firebaseAuth = FirebaseAuth.getInstance()
@@ -33,6 +32,7 @@ class LoginViewModel : ViewModel() {
     enum class AuthenticationState {
         AUTHENTICATED, UNAUTHENTICATED, INVALID_AUTHENTICATION
     }
+
     val authenticationState = FirebaseUserLiveData().map { user ->
         if (user != null) {
             AuthenticationState.AUTHENTICATED

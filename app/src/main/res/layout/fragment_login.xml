@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.IntroductionFragment">
+    tools:context=".fragment.LoginFragment">
+
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logout"/>
+        android:text="Login"/>
+
 </FrameLayout>
