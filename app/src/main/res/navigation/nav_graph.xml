@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/foodListFragment">
+    app:startDestination="@id/introductionFragment">
 
     <fragment
         android:id="@+id/introductionFragment"
         android:name="com.example.foodrecommendation.fragment.IntroductionFragment"
         android:label="fragment_introduction"
-        tools:layout="@layout/fragment_introduction" />
+        tools:layout="@layout/fragment_introduction" >
+        <action
+            android:id="@+id/action_introductionFragment_to_wheelFragment"
+            app:destination="@id/wheelFragment" />
+    </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.example.foodrecommendation.fragment.FoodDetailFragment"

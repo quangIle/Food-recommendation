@@ -9,6 +9,7 @@ import com.example.foodrecommendation.fragment.WheelFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    // See: https://developer.android.com/training/basics/intents/result
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

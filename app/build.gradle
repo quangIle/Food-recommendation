@@ -18,7 +18,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 
 
@@ -38,9 +38,19 @@ android {
 }
 
 dependencies {
-    implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha03'
+    // LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha03'
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03'
+
+    //firebase dependency
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
+    implementation "com.google.firebase:firebase-auth-ktx:21.0.1"
     implementation platform('com.google.firebase:firebase-bom:28.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    //end
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'com.airbnb.android:paris:1.7.3'
     def nav_version = '2.3.5'
