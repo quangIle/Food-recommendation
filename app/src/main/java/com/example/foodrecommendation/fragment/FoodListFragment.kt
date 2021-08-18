@@ -15,11 +15,6 @@ import com.example.foodrecommendation.databinding.FragmentFoodListBinding
 class FoodListFragment : Fragment() {
     private lateinit var binding: FragmentFoodListBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
     ): View? {
@@ -41,7 +36,7 @@ class FoodListFragment : Fragment() {
             var layout = LinearLayout(context)
             layout.style(R.style.LinearLayoutFoodRec)
             layout.orientation = LinearLayout.VERTICAL
-            binding.layoutFoodRec.addView(layout);
+            binding.layoutFoodRec.addView(layout)
 
             var btnFood = ImageButton(context)
             btnFood.style(R.style.CustomizedButton)
@@ -50,7 +45,7 @@ class FoodListFragment : Fragment() {
 
             var foodName = TextView(context)
             foodName.style(R.style.CustomizedTextView)
-            foodName.setText(listFoodName[i])
+            foodName.text = listFoodName[i]
             layout.addView(foodName)
         }
 
@@ -71,7 +66,7 @@ class FoodListFragment : Fragment() {
             var layout = LinearLayout(context)
             layout.style(R.style.LinearLayoutFoodRec)
             layout.orientation = LinearLayout.VERTICAL
-            binding.layoutBookRec.addView(layout);
+            binding.layoutBookRec.addView(layout)
 
             var btnBook = ImageButton(context)
             btnBook.style(R.style.FoodBookStyle)
@@ -80,7 +75,7 @@ class FoodListFragment : Fragment() {
 
             var bookName = TextView(context)
             bookName.style(R.style.CustomizedTextView)
-            bookName.setText(listBookName[i])
+            bookName.text = listBookName[i]
             layout.addView(bookName)
         }
         return binding.root
