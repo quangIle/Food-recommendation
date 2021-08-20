@@ -15,12 +15,20 @@ class FoodViewModel : ViewModel() {
     val databaseUrl = "https://cs426-food-recommendation-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val databaseReference = Firebase.database(databaseUrl).reference
     private val foodRef = databaseReference.child("Food")
+
     private val foodRefListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             // This method is called once with the initial value and again
             // whenever data at this location is updated.
             Log.d(TAG, "${dataSnapshot.value}")
             for (child in dataSnapshot.children) {
+                // TODO remove this
+                if (dataSnapshot.children.count() == 1)
+                {
+                    foodList.add(Food(child))
+                    foodList.add(Food(child))
+                    foodList.add(Food(child))
+                }
                 val food = Food(child)
                 foodList.add(food)
             }

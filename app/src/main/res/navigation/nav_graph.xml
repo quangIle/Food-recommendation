@@ -30,4 +30,9 @@
         android:name="com.example.foodrecommendation.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/verticalListFragment"
+        android:name="com.example.foodrecommendation.fragment.VerticalListFragment"
+        android:label="fragment_food_vertical_list"
+        tools:layout="@layout/fragment_food_vertical_list" />
 </navigation>
