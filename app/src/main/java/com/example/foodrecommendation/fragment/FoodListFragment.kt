@@ -8,9 +8,11 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.airbnb.paris.extensions.style
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodListBinding
+import com.example.foodrecommendation.model.LoginViewModel
 
 class FoodListFragment : Fragment() {
     private lateinit var binding: FragmentFoodListBinding
@@ -80,6 +82,4 @@ class FoodListFragment : Fragment() {
         }
         return binding.root
     }
-
-
 }

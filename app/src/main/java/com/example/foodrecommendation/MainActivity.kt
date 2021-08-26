@@ -34,6 +34,14 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.verticalListFragment)
                     true
                 }
+                R.id.action_introduction -> {
+                    navController.navigate(R.id.introductionFragment)
+                    true
+                }
+                R.id.action_settings -> {
+                    navController.navigate(R.id.foodDetailFragment)
+                    true
+                }
                 else -> false
             }
         }

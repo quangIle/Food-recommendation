@@ -12,6 +12,7 @@ class FoodViewModel : ViewModel() {
     val TAG = "FoodViewModel"
     val foodList: MutableList<Food> = ArrayList<Food>()
     val wheelFoodList: MutableList<Food> = ArrayList<Food>()
+
     val databaseUrl = "https://cs426-food-recommendation-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val databaseReference = Firebase.database(databaseUrl).reference
     private val foodRef = databaseReference.child("Food")
