@@ -28,13 +28,14 @@
                 android:src="@drawable/spaghetti_0"
                 android:scaleType="fitXY"
                 android:background="#D0E37F"
-                android:id="@+id/tvFoodImage" />
+                android:id="@+id/ivFoodImage" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvFoodName"
             android:text="Spaghetti"
             android:textSize="80sp"
             android:fontFamily="cursive"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:hint="Origin"
             android:text="Italia"
+            android:id="@+id/tvOrigin"
             android:fontFamily="cursive"
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
@@ -71,7 +73,13 @@
             android:textColor="@color/black"
             android:singleLine="false"/>
 
-        <!--RecyclerView-->
+        <!--Embedded youtube video-->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:showFullScreenButton="true"
+            android:id="@+id/youtubeVideo"
+            android:layout_marginTop="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,16 +100,6 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:singleLine="false"/>
-
-        <!--Embedded youtube video-->
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="sXcOYwQLeS0"
-            app:autoPlay="true"
-            app:showFullScreenButton="true"
-            android:id="@+id/youtubeVideo"
-            android:layout_marginTop="30dp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

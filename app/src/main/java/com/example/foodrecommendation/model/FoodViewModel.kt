@@ -23,13 +23,6 @@ class FoodViewModel : ViewModel() {
             // whenever data at this location is updated.
             Log.d(TAG, "${dataSnapshot.value}")
             for (child in dataSnapshot.children) {
-                // TODO remove this
-                if (dataSnapshot.children.count() == 1)
-                {
-                    foodList.add(Food(child))
-                    foodList.add(Food(child))
-                    foodList.add(Food(child))
-                }
                 val food = Food(child)
                 foodList.add(food)
             }

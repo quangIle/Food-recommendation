@@ -11,6 +11,7 @@ class Food(val info: DataSnapshot)
     val name = info.child("Name").getValue<String>()
     val imageUrl = info.child("ImageUrl").getValue<String>()
     val youTubeUrl = info.child("YoutubeUrl").getValue<String>()
+    val origin = info.child("Origin").getValue<String>()
     init {
         Log.d("Fo name", info.child("ImageUrl").getValue<String>().toString())
     }

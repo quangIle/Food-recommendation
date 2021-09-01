@@ -2,52 +2,61 @@ package com.example.foodrecommendation.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodDetailBinding
+import com.example.foodrecommendation.model.Food
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.timerTask
+import kotlin.math.log
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+
+import androidx.annotation.NonNull
+
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.squareup.picasso.Picasso
+
 
 class FoodDetailFragment : Fragment() {
     // viewbinding
+    val TAG = "FoodDetail"
     lateinit var binding: FragmentFoodDetailBinding
+    val foodList = mutableListOf<Food>()
 
-    val list = mutableListOf<String>(
-        "We firstly need 400g of tomatoes. Use a knife and lightly cut an X on top of the tomatoes",
-        "Then put them all in a boiling pot of water. Leave it to cook for 30 seconds then take it out",
-        "Next, carve out the seeds of the tomato",
-        "After that, place your tomatoes neatly into the blender and dismember them. You can also mince them instead.",
-        "After that, set it aside",
-        "Next I'll cut up some onions and cry and then blame it on the onions",
-        "Put all the onion into a bowl",
-        "Next, cut 20g of bell pepper. Bell peppers aren't spicy so don't worry if you can't eat spicy food. You can replace it with carrots or just skip this ingredient",
-        "Now that you're done with the ingredients prepping phase, you can start cooking. I'll start with 20g of butter in a pan. You can also use olive oil",
-        "I'll throw in 10g of minced garlic into the pan after the butter is melted",
-        "Add in your chopped bell pepper and onion. Mix it repeatedly until all of it starts to turn golden and smells super good",
-        "Then add 150g of minced beef into the pan. Pan-fry it for about 2-4 minutes",
-        "Next, pour in all the blended tomatoes from earlier into the pan",
-        "And add in 50ml of water into the pan as well",
-        "Mix it well then add in all the spices: ―tsp of salt and 2 tsp of sugar. You can change this to taste and the sourness of the tomatoes themselves",
-        "Next is 50g of ketchup (not tomato sauce, don't mix them up and 1 tsp of dried oregano",
-        "Lastly is a bit of grounded pepper and some chopped culantro (not cilantro)",
-        "Mix it well then close the lid and turn down the heat to low and wait for about 20min, until the sauce becomes denser",
-        "You can put in more spices if you want since the sauce is basically done now. When you're done with that, pour it on your pasta.",
-    )
-    val ingredientsList = mutableListOf<String>(
-        "400g Tomatoes",
-        "40g Onion",
-        "40g Bell pepper",
-        "20g Unsalted butter",
-        "10g Garlic",
-        "150g Beef",
-        "1/2Tsp Salt",
-        "2Tsp Sugar",
-        "50g Ketchup",
-        "1Tsp Dried Oregano",
-        "Black pepper",
-        "10g Parsley"
-    )
+    val databaseUrl = "https://cs426-food-recommendation-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private val databaseReference = Firebase.database(databaseUrl).reference
+    private val foodRef = databaseReference.child("Food")
+
+    private val foodRefListener = object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            //Log.d(TAG, "${dataSnapshot.value}")
+            for (child in dataSnapshot.children) {
+                val food = Food(child)
+                foodList.add(food)
+                //Log.d(TAG,"${foodList}")
+            }
+            //Log.d(TAG,"${foodList}")
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,16 +70,68 @@ class FoodDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_food_detail, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.tvIngredient.text = displayItems(ingredientsList)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        foodRef.addValueEventListener(foodRefListener)
+        val handler = Handler()
+        handler.postDelayed({ // Do something after 1s = 1000ms
+            val food = getFood(3,foodList)
+            if (food != null){
+                initView(food)
+            }
+        }, 1200)
+    }
+
+
+    /*override fun onStart() {
+        /*super.onStart()
+        Log.d(TAG,"${foodList}")
+        val food = getFood(1,foodList)
+        /*if (food!=null){
+            Log.d(TAG,"${food.id} ${food.imageUrl} ${food.name} ${food.youTubeUrl}")
+        }*/
+        if (food != null) {
+            binding.tvFoodName.text = food.name.toString()
+        }*/
+        /*binding.tvIngredient.text = displayItems(ingredientsList)
         binding.tvCookSteps.text = displayItems(list)
         var count = 0
         binding.tvFoodImage.setOnClickListener {
             count = (count + 1) % 3
             binding.tvFoodImage.setImageResource(getResourceId("spaghetti", count, requireContext()))
+        }*/
+    }*/
+
+    fun initView(food: Food){
+        //Set Food Name Text View
+        binding.tvFoodName.text = food.name.toString()
+        //Set Origin Text View
+        binding.tvOrigin.text = food.origin.toString()
+        //Set Youtube PLayer
+        getLifecycle().addObserver(binding.youtubeVideo);
+        binding.youtubeVideo.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = food.youTubeUrl.toString()
+                youTubePlayer.loadVideo(videoId, 0f)
+            }
+        })
+        //Set Image View
+        Picasso.get().load(food.imageUrl).into(binding.ivFoodImage)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        foodRef.removeEventListener(foodRefListener)
+    }
+}
+
+fun getFood(id: Long, foodList: MutableList<Food>): Food? {
+    for (food in foodList){
+        if (food.id == id) {
+            return food
         }
     }
+    return null
 }
 
 fun displayItems(list: MutableList<String>): String {
