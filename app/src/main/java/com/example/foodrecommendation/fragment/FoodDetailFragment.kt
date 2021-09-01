@@ -1,6 +1,5 @@
 package com.example.foodrecommendation.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -16,14 +15,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.concurrent.timerTask
-import kotlin.math.log
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-
-import androidx.annotation.NonNull
+import com.example.foodrecommendation.model.FoodMetaData
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.squareup.picasso.Picasso
@@ -32,12 +25,15 @@ import com.squareup.picasso.Picasso
 class FoodDetailFragment : Fragment() {
     // viewbinding
     val TAG = "FoodDetail"
+    var FOOD_ID: Long = 2
     lateinit var binding: FragmentFoodDetailBinding
     val foodList = mutableListOf<Food>()
+    val foodMetaDataList = mutableListOf<FoodMetaData>()
 
     val databaseUrl = "https://cs426-food-recommendation-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val databaseReference = Firebase.database(databaseUrl).reference
     private val foodRef = databaseReference.child("Food")
+    private val foodMetaDataRef = databaseReference.child("Food Meta Data")
 
     private val foodRefListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -48,6 +44,25 @@ class FoodDetailFragment : Fragment() {
                 val food = Food(child)
                 foodList.add(food)
                 //Log.d(TAG,"${foodList}")
+            }
+            //Log.d(TAG,"${foodList}")
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException())
+        }
+    }
+
+    private val foodMetaDataRefListener = object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            //Log.d(TAG, "${dataSnapshot.value}")
+            for (child in dataSnapshot.children) {
+                val item = FoodMetaData(child)
+                foodMetaDataList.add(item)
+                //Log.d(TAG,"${ingredientList}")
             }
             //Log.d(TAG,"${foodList}")
         }
@@ -73,36 +88,18 @@ class FoodDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         foodRef.addValueEventListener(foodRefListener)
+        foodMetaDataRef.addValueEventListener(foodMetaDataRefListener)
         val handler = Handler()
         handler.postDelayed({ // Do something after 1s = 1000ms
-            val food = getFood(3,foodList)
-            if (food != null){
-                initView(food)
+                val food = getFood(FOOD_ID,foodList)
+                val ingredient = getFoodMetaData(FOOD_ID, foodMetaDataList)
+                if (food != null && ingredient != null){
+                    initView(food, ingredient)
             }
-        }, 1200)
+        }, 1000)
     }
 
-
-    /*override fun onStart() {
-        /*super.onStart()
-        Log.d(TAG,"${foodList}")
-        val food = getFood(1,foodList)
-        /*if (food!=null){
-            Log.d(TAG,"${food.id} ${food.imageUrl} ${food.name} ${food.youTubeUrl}")
-        }*/
-        if (food != null) {
-            binding.tvFoodName.text = food.name.toString()
-        }*/
-        /*binding.tvIngredient.text = displayItems(ingredientsList)
-        binding.tvCookSteps.text = displayItems(list)
-        var count = 0
-        binding.tvFoodImage.setOnClickListener {
-            count = (count + 1) % 3
-            binding.tvFoodImage.setImageResource(getResourceId("spaghetti", count, requireContext()))
-        }*/
-    }*/
-
-    fun initView(food: Food){
+    fun initView(food: Food, foodMetaData: FoodMetaData){
         //Set Food Name Text View
         binding.tvFoodName.text = food.name.toString()
         //Set Origin Text View
@@ -115,6 +112,12 @@ class FoodDetailFragment : Fragment() {
                 youTubePlayer.loadVideo(videoId, 0f)
             }
         })
+        //Set Ingredient Text View
+        val ingredients = foodMetaData.ingredients
+        binding.tvIngredient.text = ingredients.toString().replace(",","\n")
+        //Set Steps Text View
+        val steps = foodMetaData.steps
+        binding.tvCookSteps.text = steps.toString().replace(". ","\n")
         //Set Image View
         Picasso.get().load(food.imageUrl).into(binding.ivFoodImage)
     }
@@ -122,6 +125,7 @@ class FoodDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         foodRef.removeEventListener(foodRefListener)
+        foodMetaDataRef.removeEventListener(foodMetaDataRefListener)
     }
 }
 
@@ -134,19 +138,11 @@ fun getFood(id: Long, foodList: MutableList<Food>): Food? {
     return null
 }
 
-fun displayItems(list: MutableList<String>): String {
-    var items = ""
-    for (i in list.indices) {
-        items = items + (i + 1).toString() + ". " + list[i] + "\n"
+fun getFoodMetaData(id: Long, list: MutableList<FoodMetaData>) : FoodMetaData? {
+    for (ingredient in list){
+        if (ingredient.id == id) {
+            return ingredient
+        }
     }
-    return items
-}
-
-fun getResourceId(filename: String, count: Int, context: Context): Int {
-    val id: Int = context.resources.getIdentifier(
-        filename + "_" + count.toString(),
-        "drawable",
-        context.packageName
-    )
-    return id
+    return null
 }

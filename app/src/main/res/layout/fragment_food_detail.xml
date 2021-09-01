@@ -36,20 +36,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvFoodName"
-            android:text="Spaghetti"
             android:textSize="80sp"
-            android:fontFamily="cursive"
+            android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:textColor="#4B0082"
+            android:text="Loading..."
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Origin"
-            android:text="Italia"
             android:id="@+id/tvOrigin"
-            android:fontFamily="cursive"
+            android:text="Loading..."
+            android:fontFamily="sans-serif"
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
 
@@ -57,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ingredients"
-            android:fontFamily="cursive"
+            android:fontFamily="sans-serif"
             android:textSize="50sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -68,10 +67,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvIngredient"
             android:textSize="20sp"
-            android:text="first item\n second item\n third item"
+            android:text="Loading..."
             android:layout_gravity="start"
             android:textColor="@color/black"
+            android:fontFamily="sans-serif"
             android:singleLine="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="How to cook"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="end"/>
 
         <!--Embedded youtube video-->
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -84,20 +94,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="How to cook"
-            android:fontFamily="cursive"
-            android:layout_gravity="end"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="first item\n second item\n third item"
+            android:text="Loading..."
             android:id="@+id/tvCookSteps"
             android:layout_gravity="end"
             android:textSize="20sp"
+            android:fontFamily="sans-serif"
             android:textColor="@color/black"
             android:singleLine="false"/>
 
