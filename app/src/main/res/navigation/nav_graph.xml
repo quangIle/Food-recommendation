@@ -35,4 +35,8 @@
         android:name="com.example.foodrecommendation.fragment.VerticalListFragment"
         android:label="fragment_food_vertical_list"
         tools:layout="@layout/fragment_food_vertical_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.foodrecommendation.fragment.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
