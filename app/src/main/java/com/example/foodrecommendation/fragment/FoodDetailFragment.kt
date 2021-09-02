@@ -114,10 +114,10 @@ class FoodDetailFragment : Fragment() {
         })
         //Set Ingredient Text View
         val ingredients = foodMetaData.ingredients
-        binding.tvIngredient.text = ingredients.toString().replace(",","\n")
+        binding.tvIngredient.text = ingredients.toString().replace(".","\n")
         //Set Steps Text View
         val steps = foodMetaData.steps
-        binding.tvCookSteps.text = steps.toString().replace(". ","\n")
+        binding.tvCookSteps.text = steps.toString().replace(".","\n")
         //Set Image View
         Picasso.get().load(food.imageUrl).into(binding.ivFoodImage)
     }
