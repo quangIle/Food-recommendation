@@ -4,9 +4,6 @@
         android:id="@+id/action_verticalList"
         android:title="Vertical List" />
     <item
-        android:id="@+id/action_introduction"
-        android:title="Introduction" />
-    <item
         android:id="@+id/action_list"
         android:title="List" />
     <item
