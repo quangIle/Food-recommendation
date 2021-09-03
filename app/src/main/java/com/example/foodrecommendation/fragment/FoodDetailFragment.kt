@@ -62,15 +62,17 @@ class FoodDetailFragment : Fragment() {
             AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 val videoId = foodIndex.youTubeUrl.toString()
-                youTubePlayer.loadVideo(videoId, 0f)
+                //youTubePlayer.loadVideo(videoId, 0f)
+                val START_TIME: Float = 0.toFloat()
+                youTubePlayer.cueVideo(videoId, START_TIME)
             }
         })
         //Set Ingredient Text View
         val ingredients = foodMetaData.ingredients
-        binding.tvIngredient.text = ingredients.toString().replace(".", "\n")
+        binding.tvIngredient.expandTextView.text = ingredients.toString().replace(".", "\n")
         //Set Steps Text View
         val steps = foodMetaData.steps
-        binding.tvCookSteps.text = steps.toString().replace(".", "\n")
+        binding.tvCookSteps.expandTextView.text = steps.toString().replace(".", "\n")
         //Set Image View
         Picasso.get().load(foodIndex.imageUrl).into(binding.ivFoodImage)
     }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    android:background="#D0E37F"
+    android:background="@color/white"
     tools:context=".fragment.FoodDetailFragment">
 
     <LinearLayout
@@ -37,41 +37,35 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvFoodName"
             android:textSize="80sp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/dejavu_bold"
             android:textStyle="bold"
-            android:textColor="#4B0082"
-            android:text="Loading..."
+            android:textColor="@color/black"
+            android:text="Food"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvOrigin"
-            android:text="Loading..."
-            android:fontFamily="sans-serif"
+            android:text="Origin"
+            android:fontFamily="@font/dejavu_bold"
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ingredients"
-            android:fontFamily="sans-serif"
+            android:text="Nguyên Liệu"
+            android:fontFamily="@font/dejavu_bold"
             android:textSize="50sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_gravity="start"/>
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <include
             android:id="@+id/tvIngredient"
-            android:textSize="20sp"
-            android:text="Loading..."
-            android:layout_gravity="start"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif"
-            android:singleLine="false"/>
+            layout="@layout/text_item"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,9 +73,9 @@
             android:textSize="50sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="How to cook"
-            android:fontFamily="sans-serif"
-            android:layout_gravity="end"/>
+            android:text="Hướng Dẫn"
+            android:fontFamily="@font/dejavu_bold"
+            android:layout_gravity="center_horizontal"/>
 
         <!--Embedded youtube video-->
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -89,18 +83,12 @@
             android:layout_height="wrap_content"
             app:showFullScreenButton="true"
             android:id="@+id/youtubeVideo"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loading..."
+        <include
             android:id="@+id/tvCookSteps"
-            android:layout_gravity="end"
-            android:textSize="20sp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:singleLine="false"/>
+            layout="@layout/text_item"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
