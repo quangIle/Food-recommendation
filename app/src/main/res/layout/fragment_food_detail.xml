@@ -26,14 +26,14 @@
                 android:layout_height="400dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/spaghetti_0"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:background="#D0E37F"
                 android:id="@+id/ivFoodImage" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvFoodName"
             android:textSize="80sp"
@@ -41,16 +41,16 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="Food"
-            android:layout_gravity="center_horizontal"/>
+            android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvOrigin"
             android:text="Origin"
             android:fontFamily="@font/dejavu_bold"
             android:textSize="40sp"
-            android:layout_gravity="center_horizontal"/>
+            android:gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,6 +89,17 @@
         <include
             android:id="@+id/tvCookSteps"
             layout="@layout/text_item"/>
+        
+        <Button
+            android:id="@+id/btMap"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Nearby"
+            android:fontFamily="@font/dejavu_bold"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_background"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
