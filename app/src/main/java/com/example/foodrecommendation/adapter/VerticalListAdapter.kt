@@ -9,11 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.model.FoodViewModel
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
 
 class VerticalListAdapter(
     private val context: Context,
@@ -35,8 +33,8 @@ class VerticalListAdapter(
         val item = foodViewModel.foodList[position]
         holder.textView.text = item.name
 
-        val gsReference = Firebase.storage.getReferenceFromUrl(item.imageUrl!!)
-        Glide.with(context).load(gsReference).into(holder.imageView)
+
+        Picasso.get().load(item.imageUrl).into(holder.imageView)
 
         holder.itemView.setOnClickListener {
             Log.d("Quang", "item click")
