@@ -12,44 +12,58 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class FoodViewModel : ViewModel() {
+    val COMPLETED = "Completed"
+    val LOADING = "Loading"
     val TAG = "FoodViewModel"
-    val databaseUrl =
+
+    private val databaseUrl =
         "https://cs426-food-recommendation-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val databaseReference = Firebase.database(databaseUrl).reference
-    private val foodRef = databaseReference.child("Food")
+    private val foodListRef = databaseReference.child("Food")
+    private val foodMetaDataRef = databaseReference.child("Food Meta Data")
 
-    val foodList: MutableList<Food> = ArrayList<Food>()
-    lateinit var foodDetail: Food
-    val wheelFoodList: MutableList<Food> = ArrayList<Food>()
+    val wheelFoodList: MutableList<Food> = ArrayList()
 
     init {
         Log.d(TAG, "Init ViewModel")
     }
 
-    private val _foodListState = MutableLiveData<Boolean>(false)
+    val foodList: MutableList<Food> = ArrayList()
+    private val _foodListState = MutableLiveData(false)
     val foodListState: LiveData<String> = _foodListState.map { value ->
-        val completed = "Completed"
-        val loading = "Loading"
         if (value)
-            completed
+            COMPLETED
         else
-            loading
+            LOADING
+    }
+
+    lateinit var foodIndex: Food
+    lateinit var foodMetaData: FoodMetaData
+    private val _foodMetaDataState = MutableLiveData(false)
+    val foodMetaDataState: LiveData<String> = _foodMetaDataState.map { value ->
+        if (value)
+            COMPLETED
+        else
+            LOADING
     }
 
     fun loadFoodList() {
-        foodRef.addValueEventListener(foodRefListener)
+        foodListRef.addValueEventListener(foodListRefListener)
     }
 
-    fun addFoodToWheel(food: Food) {
-        wheelFoodList.add(food)
+    fun loadFoodMetaData() {
+        Log.d("Quang", "Load food metadata")
+        foodMetaDataRef.child(foodIndex.name.toString()).addValueEventListener(foodMetaDataRefListener)
     }
 
     override fun onCleared() {
         super.onCleared()
-        foodRef.removeEventListener(foodRefListener)
+        Log.d("Quang", "Clear FoodViewModel")
+        foodListRef.removeEventListener(foodListRefListener)
+        foodMetaDataRef.child(foodIndex.name.toString()).removeEventListener(foodMetaDataRefListener)
     }
 
-    private val foodRefListener = object : ValueEventListener {
+    private val foodListRefListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             Log.d(TAG, "${dataSnapshot.value}")
             for (child in dataSnapshot.children) {
@@ -61,6 +75,18 @@ class FoodViewModel : ViewModel() {
 
         override fun onCancelled(error: DatabaseError) {
             // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException())
+        }
+    }
+
+    private val foodMetaDataRefListener = object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            Log.d("Quang", "${dataSnapshot.value}")
+            foodMetaData = FoodMetaData(dataSnapshot)
+            _foodMetaDataState.value = true
+        }
+
+        override fun onCancelled(error: DatabaseError) {
             Log.w(TAG, "Failed to read value.", error.toException())
         }
     }

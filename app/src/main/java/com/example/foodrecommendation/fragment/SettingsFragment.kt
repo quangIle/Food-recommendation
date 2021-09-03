@@ -1,6 +1,7 @@
 package com.example.foodrecommendation.fragment
 
 import android.os.Bundle
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.foodrecommendation.R
@@ -17,6 +18,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun userLogout(): Boolean {
         FirebaseAuth.getInstance().signOut()
+        findNavController().navigateUp()
         return true
     }
 }

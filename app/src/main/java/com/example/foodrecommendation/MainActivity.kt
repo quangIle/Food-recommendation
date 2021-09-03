@@ -15,7 +15,6 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -42,11 +41,12 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+        //setupActionBarWithNavController(navController)
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setupWithNavController(navController)
-        bottomNavigation.setOnItemSelectedListener(bottomNavigationItemSelectedLister)
         bottomNavigation.visibility = View.INVISIBLE
+        
     }
 
 
@@ -63,29 +63,6 @@ class MainActivity : AppCompatActivity() {
         val signInIntent = createSignInIntent()
         signInLauncher.launch(signInIntent)
     }
-
-    private val bottomNavigationItemSelectedLister =
-        NavigationBarView.OnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.action_list -> {
-                    navController.navigate(R.id.foodListFragment)
-                    true
-                }
-                R.id.action_wheel -> {
-                    navController.navigate(R.id.wheelFragment)
-                    true
-                }
-                R.id.action_verticalList -> {
-                    navController.navigate(R.id.verticalListFragment)
-                    true
-                }
-                R.id.action_settings -> {
-                    navController.navigate(R.id.settingsFragment)
-                    true
-                }
-                else -> false
-            }
-        }
 
     private fun createSignInIntent(): Intent {
         // Choose authentication providers
@@ -139,5 +116,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
