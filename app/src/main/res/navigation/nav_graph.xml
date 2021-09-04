@@ -34,7 +34,13 @@
         android:id="@+id/verticalListFragment"
         android:name="com.example.foodrecommendation.fragment.VerticalListFragment"
         android:label="fragment_food_vertical_list"
-        tools:layout="@layout/fragment_food_vertical_list" />
+        tools:layout="@layout/fragment_food_vertical_list" >
+        <action
+            android:id="@+id/action_verticalListFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.foodrecommendation.fragment.SettingsFragment"

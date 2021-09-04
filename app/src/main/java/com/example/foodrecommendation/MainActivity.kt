@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth
 import np.com.susanthapa.curved_bottom_navigation.CbnMenuItem
 import np.com.susanthapa.curved_bottom_navigation.CurvedBottomNavigationView
 
+
+
+
 class MainActivity : AppCompatActivity() {
     private val TAG = "Quang"
     private lateinit var navController: NavController
@@ -46,13 +49,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setMenuItems(menuItems, 0)
         bottomNavigation.setupWithNavController(navController)
-        //bottomNavigation.visibility = View.INVISIBLE
-
     }
-
 
     private fun onSuccess() {
         Log.d(TAG, "Login successful! User token: ${FirebaseAuth.getInstance().currentUser}")
+        bottomNavigation.visibility = View.VISIBLE
     }
 
     private fun onExitApp() {
@@ -102,7 +103,6 @@ class MainActivity : AppCompatActivity() {
                         "Already signed in! Current user token: ${FirebaseAuth.getInstance().currentUser?.displayName}"
                     )
                     launchSignIn = true
-                    bottomNavigation.visibility = View.VISIBLE
                 }
                 LoginViewModel.AuthenticationState.UNAUTHENTICATED -> {
                     if (launchSignIn)
@@ -123,8 +123,8 @@ class MainActivity : AppCompatActivity() {
 
     private val menuItems = arrayOf(
         CbnMenuItem(
-            R.drawable.ic_camera,
-            R.drawable.avd_camera,
+            R.drawable.ic_home,
+            R.drawable.avd_home,
             R.id.foodListFragment
         ),
         CbnMenuItem(

@@ -25,7 +25,7 @@ class FoodViewModel : ViewModel() {
     val wheelFoodList: MutableList<Food> = ArrayList()
 
     init {
-        Log.d(TAG, "Init ViewModel")
+        Log.d(TAG, "Init FoodViewModel")
     }
 
     val foodList: MutableList<Food> = ArrayList()
@@ -66,7 +66,6 @@ class FoodViewModel : ViewModel() {
 
     private val foodListRefListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
-            Log.d(TAG, "${dataSnapshot.value}")
             for (child in dataSnapshot.children) {
                 val food = Food(child)
                 foodList.add(food)

@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodDetailBinding
+import com.example.foodrecommendation.model.BrowserViewModel
 import com.example.foodrecommendation.model.FoodViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -18,6 +20,12 @@ import np.com.susanthapa.curved_bottom_navigation.CurvedBottomNavigationView
 class FoodDetailFragment : Fragment() {
     private lateinit var binding: FragmentFoodDetailBinding
     private val foodViewModel by activityViewModels<FoodViewModel>()
+    private val browserViewModel by viewModels<BrowserViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        browserViewModel.getReady(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +40,10 @@ class FoodDetailFragment : Fragment() {
             .visibility = View.INVISIBLE
 
         foodViewModel.loadFoodMetaData()
+
+        binding.btMap.setOnClickListener {
+            browserViewModel.launchBrowser(foodViewModel.foodIndex?.name.toString())
+        }
         return binding.root
     }
 

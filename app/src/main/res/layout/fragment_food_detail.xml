@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
+    android:padding="3dp"
     android:background="@color/white"
     tools:context=".fragment.FoodDetailFragment">
 
@@ -25,7 +25,7 @@
                 android:layout_width="400dp"
                 android:layout_height="400dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/spaghetti_0"
+                tools:src="@drawable/spaghetti_0"
                 android:scaleType="centerCrop"
                 android:background="#D0E37F"
                 android:id="@+id/ivFoodImage" />
@@ -40,14 +40,14 @@
             android:fontFamily="@font/dejavu_bold"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="Food"
+            tools:text="Food Name"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvOrigin"
-            android:text="Origin"
+            tools:text="Origin"
             android:fontFamily="@font/dejavu_bold"
             android:textSize="40sp"
             android:gravity="center"/>
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nguyên Liệu"
+            tools:text="Nguyên Liệu"
             android:fontFamily="@font/dejavu_bold"
             android:textSize="50sp"
             android:textStyle="bold"
