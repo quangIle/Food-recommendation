@@ -50,7 +50,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
     implementation "com.google.firebase:firebase-auth-ktx:21.0.1"
     // Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
     // Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
     // Firebase Storage
@@ -58,7 +58,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
     // Declare the dependency for the Realtime Database library
     implementation 'com.google.firebase:firebase-database-ktx'
-
+    //Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     // Glide
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 

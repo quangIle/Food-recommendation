@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.foodrecommendation.model.LoginViewModel
+import com.firebase.ui.auth.AuthMethodPickerLayout
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -95,13 +96,15 @@ class MainActivity : AppCompatActivity() {
         // Choose authentication providers
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-            //AuthUI.IdpConfig.FacebookBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build(),
+            AuthUI.IdpConfig.FacebookBuilder().build()
             //AuthUI.IdpConfig.TwitterBuilder().build())
         )
+
         return AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
+            .setTheme(R.style.LoginTheme)
             .build()
     }
 
@@ -123,8 +126,8 @@ class MainActivity : AppCompatActivity() {
         loginViewModel.authenticationState.observe(this, { authenticationState ->
             Log.d(TAG, authenticationState.toString())
             when (authenticationState) {
-                LoginViewModel.AuthenticationState.AUTHENTICATED -> {
-                    Log.d(
+                        LoginViewModel.AuthenticationState.AUTHENTICATED -> {
+                        Log.d(
                         TAG,
                         "Already signed in! Current user token: ${FirebaseAuth.getInstance().currentUser?.displayName}"
                     )
