@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         )
         return AuthUI.getInstance()
             .createSignInIntentBuilder()
+            .setAlwaysShowSignInMethodScreen(true)
+            .setIsSmartLockEnabled(false)
             .setAvailableProviders(providers)
             .build()
     }
