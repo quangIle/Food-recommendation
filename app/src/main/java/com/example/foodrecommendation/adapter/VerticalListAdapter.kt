@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.model.FoodViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
 class VerticalListAdapter(
     private val context: Context,
@@ -33,8 +35,9 @@ class VerticalListAdapter(
         val item = foodViewModel.foodList[position]
         holder.textView.text = item.name
 
-
-        Picasso.get().load(item.imageUrl).into(holder.imageView)
+        foodViewModel.viewModelScope.launch {
+            Picasso.get().load(item.imageUrl).into(holder.imageView)
+        }
 
         holder.itemView.setOnClickListener {
             Log.d("Quang", "item click")

@@ -37,7 +37,7 @@ class FoodViewModel : ViewModel() {
             LOADING
     }
 
-    lateinit var foodIndex: Food
+    var foodIndex: Food? = null
     lateinit var foodMetaData: FoodMetaData
     private val _foodMetaDataState = MutableLiveData(false)
     val foodMetaDataState: LiveData<String> = _foodMetaDataState.map { value ->
@@ -53,14 +53,15 @@ class FoodViewModel : ViewModel() {
 
     fun loadFoodMetaData() {
         Log.d("Quang", "Load food metadata")
-        foodMetaDataRef.child(foodIndex.name.toString()).addValueEventListener(foodMetaDataRefListener)
+        _foodMetaDataState.value = false
+        foodMetaDataRef.child(foodIndex?.name.toString()).addValueEventListener(foodMetaDataRefListener)
     }
 
     override fun onCleared() {
         super.onCleared()
         Log.d("Quang", "Clear FoodViewModel")
         foodListRef.removeEventListener(foodListRefListener)
-        foodMetaDataRef.child(foodIndex.name.toString()).removeEventListener(foodMetaDataRefListener)
+        foodMetaDataRef.child(foodIndex?.name.toString()).removeEventListener(foodMetaDataRefListener)
     }
 
     private val foodListRefListener = object : ValueEventListener {

@@ -1,7 +1,6 @@
 package com.example.foodrecommendation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodDetailBinding
 import com.example.foodrecommendation.model.FoodViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.squareup.picasso.Picasso
+import np.com.susanthapa.curved_bottom_navigation.CurvedBottomNavigationView
 
 
 class FoodDetailFragment : Fragment() {
@@ -29,9 +28,10 @@ class FoodDetailFragment : Fragment() {
         binding = FragmentFoodDetailBinding.inflate(inflater, container, false)
         observeFoodMetaDataState()
         this.requireActivity()
-            .findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            .findViewById<CurvedBottomNavigationView>(R.id.bottom_navigation)
             .visibility = View.INVISIBLE
 
+        foodViewModel.loadFoodMetaData()
         return binding.root
     }
 
@@ -41,9 +41,6 @@ class FoodDetailFragment : Fragment() {
                 foodViewModel.COMPLETED -> {
                     loadMetaDataToView()
                 }
-                foodViewModel.LOADING -> {
-                    foodViewModel.loadFoodMetaData()
-                }
                 else -> {
                 }
             }
@@ -51,7 +48,7 @@ class FoodDetailFragment : Fragment() {
     }
 
     private fun loadMetaDataToView() {
-        val foodIndex = foodViewModel.foodIndex
+        val foodIndex = foodViewModel.foodIndex!!
         val foodMetaData = foodViewModel.foodMetaData
         //Set Food Name Text View
         binding.tvFoodName.text = foodIndex.name.toString()
@@ -81,7 +78,7 @@ class FoodDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         this.requireActivity()
-            .findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            .findViewById<CurvedBottomNavigationView>(R.id.bottom_navigation)
             .visibility = View.VISIBLE
     }
 }

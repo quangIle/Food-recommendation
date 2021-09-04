@@ -9,24 +9,24 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.foodrecommendation.model.LoginViewModel
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import np.com.susanthapa.curved_bottom_navigation.CbnMenuItem
+import np.com.susanthapa.curved_bottom_navigation.CurvedBottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "Quang"
     private lateinit var navController: NavController
-    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var bottomNavigation: CurvedBottomNavigationView
     private val loginViewModel by viewModels<LoginViewModel>()
     private var launchSignIn = true
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
-    ) { result ->
-        Log.d(TAG, "reach")
+    )
+    { result ->
         onSignInResult(result)
     }
 
@@ -44,9 +44,10 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController)
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setMenuItems(menuItems, 0)
         bottomNavigation.setupWithNavController(navController)
-        bottomNavigation.visibility = View.INVISIBLE
-        
+        //bottomNavigation.visibility = View.INVISIBLE
+
     }
 
 
@@ -81,7 +82,6 @@ class MainActivity : AppCompatActivity() {
     private fun onSignInResult(
         result: FirebaseAuthUIAuthenticationResult
     ) {
-        Log.d(TAG, "reach")
         val response = result.idpResponse
         if (result.resultCode == Activity.RESULT_OK)
             onSuccess()
@@ -103,7 +103,6 @@ class MainActivity : AppCompatActivity() {
                     )
                     launchSignIn = true
                     bottomNavigation.visibility = View.VISIBLE
-
                 }
                 LoginViewModel.AuthenticationState.UNAUTHENTICATED -> {
                     if (launchSignIn)
@@ -121,4 +120,23 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+    private val menuItems = arrayOf(
+        CbnMenuItem(
+            R.drawable.ic_camera,
+            R.drawable.avd_camera,
+            R.id.foodListFragment
+        ),
+        CbnMenuItem(
+            R.drawable.ic_dashboard, // the icon
+            R.drawable.avd_dashboard, // the AVD that will be shown in FAB
+            R.id.verticalListFragment // optional if you use Jetpack Navigation
+        ),
+        CbnMenuItem(
+            R.drawable.ic_settings,
+            R.drawable.avd_settings,
+            R.id.settingsFragment
+        )
+    )
+
 }
