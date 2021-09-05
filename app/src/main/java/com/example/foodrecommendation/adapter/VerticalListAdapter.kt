@@ -12,12 +12,14 @@ import com.airbnb.paris.utils.setPaddingBottom
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.RecyclerViewItemBinding
 import com.example.foodrecommendation.model.FoodViewModel
+import com.example.foodrecommendation.model.HistoryViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class VerticalListAdapter(
     private val context: Context,
     private val foodViewModel: FoodViewModel,
+    val historyViewModel: HistoryViewModel,
     private val navController: NavController
 ) : RecyclerView.Adapter<VerticalListAdapter.FoodVerticalListViewHolder>() {
 
@@ -44,6 +46,9 @@ class VerticalListAdapter(
         }
 
         holder.itemView.setOnClickListener {
+            historyViewModel.viewModelScope.launch {
+                historyViewModel.writeUserHistory(item.name.toString())
+            }
             foodViewModel.foodIndex = item
             navController.navigate(R.id.foodDetailFragment)
         }

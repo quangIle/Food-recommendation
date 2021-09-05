@@ -3,33 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/foodListFragment">
+    app:startDestination="@id/verticalListFragment">
 
-    <fragment
-        android:id="@+id/introductionFragment"
-        android:name="com.example.foodrecommendation.fragment.IntroductionFragment"
-        android:label="fragment_introduction"
-        tools:layout="@layout/fragment_introduction" />
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.example.foodrecommendation.fragment.FoodDetailFragment"
         android:label="fragment_food_detail"
         tools:layout="@layout/fragment_food_detail" />
     <fragment
-        android:id="@+id/wheelFragment"
-        android:name="com.example.foodrecommendation.fragment.WheelFragment"
-        android:label="fragment_wheel"
-        tools:layout="@layout/fragment_wheel" />
-    <fragment
         android:id="@+id/foodListFragment"
         android:name="com.example.foodrecommendation.fragment.FoodListFragment"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.foodrecommendation.fragment.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/verticalListFragment"
         android:name="com.example.foodrecommendation.fragment.VerticalListFragment"
@@ -49,4 +34,8 @@
         android:id="@+id/cameraFragment"
         android:name="com.example.foodrecommendation.fragment.CameraFragment"
         android:label="CameraFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.foodrecommendation.fragment.HistoryFragment"
+        android:label="HistoryFragment" />
 </navigation>

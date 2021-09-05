@@ -12,10 +12,12 @@ import com.example.foodrecommendation.adapter.LoadingAdapter
 import com.example.foodrecommendation.adapter.VerticalListAdapter
 import com.example.foodrecommendation.databinding.FragmentFoodVerticalListBinding
 import com.example.foodrecommendation.model.FoodViewModel
+import com.example.foodrecommendation.model.HistoryViewModel
 
 class VerticalListFragment : Fragment() {
     private lateinit var binding: FragmentFoodVerticalListBinding
     private val foodViewModel by activityViewModels<FoodViewModel>()
+    private val historyViewModel by activityViewModels<HistoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +37,7 @@ class VerticalListFragment : Fragment() {
             when (foodListState) {
                 foodViewModel.COMPLETED -> {
                     binding.verticalFoodList.adapter =
-                        VerticalListAdapter(requireContext(), foodViewModel, findNavController())
+                        VerticalListAdapter(requireContext(), foodViewModel, historyViewModel, findNavController())
                 }
                 foodViewModel.LOADING -> {
                     foodViewModel.loadFoodList()

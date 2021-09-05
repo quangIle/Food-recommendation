@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentIntroductionBinding
 import com.example.foodrecommendation.model.LoginViewModel
 import com.firebase.ui.auth.AuthUI
@@ -43,7 +41,7 @@ class IntroductionFragment : Fragment() {
                     // TODO 3. Lastly, if there is no logged-in user,
                     // auth_button should display Login and
                     //  launch the sign in screen when clicked.
-                    findNavController().navigate(R.id.loginFragment)
+                    //findNavController().navigate(R.id.loginFragment)
                 }
             }
         })

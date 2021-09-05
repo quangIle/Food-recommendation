@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.RecognitionItemBinding
 import com.example.foodrecommendation.model.FoodViewModel
+import com.example.foodrecommendation.model.HistoryViewModel
 import com.example.foodrecommendation.model.Recognition
 
 class RecognitionAdapter(
     private val ctx: Context,
     private val foodViewModel: FoodViewModel,
+    private val historyViewModel: HistoryViewModel,
     private var navController: NavController
 ) :
     ListAdapter<Recognition, RecognitionViewHolder>(RecognitionDiffUtil()) {
@@ -36,6 +38,7 @@ class RecognitionAdapter(
             foodViewModel.foodIndex = foodViewModel.foodList.find {
                 it.name == item.name
             }
+            historyViewModel.writeUserHistory(item.name)
             navController.navigate(R.id.foodDetailFragment)
         }
     }

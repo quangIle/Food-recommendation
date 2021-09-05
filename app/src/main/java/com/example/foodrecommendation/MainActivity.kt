@@ -71,9 +71,10 @@ class MainActivity : AppCompatActivity() {
     private fun createSignInIntent(): Intent {
         // Choose authentication providers
         val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build(),
-            AuthUI.IdpConfig.FacebookBuilder().build()
+            AuthUI.IdpConfig.FacebookBuilder().build(),
+            AuthUI.IdpConfig.AnonymousBuilder().build(),
+            AuthUI.IdpConfig.EmailBuilder().build()
             //AuthUI.IdpConfig.TwitterBuilder().build())
         )
 
@@ -127,11 +128,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val menuItems = arrayOf(
-        CbnMenuItem(
-            R.drawable.ic_home,
-            R.drawable.avd_home,
-            R.id.foodListFragment
-        ),
+//        CbnMenuItem(
+//            R.drawable.ic_home,
+//            R.drawable.avd_home,
+//            R.id.foodListFragment
+//        ),
         CbnMenuItem(
             R.drawable.ic_dashboard, // the icon
             R.drawable.avd_dashboard, // the AVD that will be shown in FAB
