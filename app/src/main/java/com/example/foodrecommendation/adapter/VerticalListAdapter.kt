@@ -21,6 +21,7 @@ class VerticalListAdapter(
     class FoodVerticalListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.rvItemText)
         val imageView: ImageView = view.findViewById(R.id.rvItemImage)
+        val itemOrigin: TextView = view.findViewById(R.id.rvItemOrigin)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodVerticalListViewHolder {
@@ -32,6 +33,7 @@ class VerticalListAdapter(
     override fun onBindViewHolder(holder: FoodVerticalListViewHolder, position: Int) {
         val item = foodViewModel.foodList[position]
         holder.textView.text = item.name
+        holder.itemOrigin.text = item.origin
 
 
         Picasso.get().load(item.imageUrl).into(holder.imageView)
