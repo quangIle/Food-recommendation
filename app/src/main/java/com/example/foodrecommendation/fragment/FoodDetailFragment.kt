@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodDetailBinding
 import com.example.foodrecommendation.model.BrowserViewModel
@@ -41,8 +42,11 @@ class FoodDetailFragment : Fragment() {
 
         foodViewModel.loadFoodMetaData()
 
-        binding.btMap.setOnClickListener {
+        binding.mapButton.setOnClickListener {
             browserViewModel.launchBrowser(foodViewModel.foodIndex?.name.toString())
+        }
+        binding.cancelButton.setOnClickListener{
+            findNavController().navigateUp()
         }
         return binding.root
     }

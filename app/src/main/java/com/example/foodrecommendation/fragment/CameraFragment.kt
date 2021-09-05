@@ -13,9 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -52,6 +52,30 @@ class CameraFragment : Fragment() {
     private lateinit var camera: Camera
     private val cameraExecutor = Executors.newSingleThreadExecutor()
 
+    // Permission request
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(
+                    requireContext(),
+                    "Permission granted!",
+                    Toast.LENGTH_LONG
+                ).show()
+                startCamera()
+            }
+            else {
+                Toast.makeText(
+                    this.requireContext(),
+                    "Permission denied",
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().navigateUp()
+            }
+        }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,19 +84,9 @@ class CameraFragment : Fragment() {
         binding = FragmentCameraBinding.inflate(inflater, container, false)
         // Request camera permissions
         if (allPermissionsGranted()) {
-            val viewAdapter = RecognitionAdapter(this.requireContext())
-            binding.recognitionResults.adapter = viewAdapter
-            binding.recognitionResults.itemAnimator = null
-            recognitionViewModel.recognitionList.observe(this.requireActivity(),
-                Observer {
-                    viewAdapter.submitList(it)
-                }
-            )
             startCamera()
         } else {
-            ActivityCompat.requestPermissions(
-                this.requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
-            )
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
         return binding.root
     }
@@ -89,30 +103,38 @@ class CameraFragment : Fragment() {
     /**
      * This gets called after the Camera permission pop up is shown.
      */
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray
     ) {
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (allPermissionsGranted()) {
-                startCamera()
-            } else {
-                // Exit the app if permission is not granted
-                // Best practice is to explain and offer a chance to re-request but this is out of
-                // scope in this sample. More details:
-                // https://developer.android.com/training/permissions/usage-notes
-                Toast.makeText(
-                    this.requireContext(),
-                    "Permission denied",
-                    Toast.LENGTH_SHORT
-                ).show()
-                findNavController().navigateUp()
-            }
+        Log.d("Q", "Granted")
+        if (allPermissionsGranted()) {
+            startCamera()
+        } else {
+            // Exit the app if permission is not granted
+            // Best practice is to explain and offer a chance to re-request but this is out of
+            // scope in this sample. More details:
+            // https://developer.android.com/training/permissions/usage-notes
+            Toast.makeText(
+                this.requireContext(),
+                "Permission denied",
+                Toast.LENGTH_SHORT
+            ).show()
+            findNavController().navigateUp()
         }
     }
 
     private fun startCamera() {
+        val viewAdapter = RecognitionAdapter(this.requireContext())
+        binding.recognitionResults.adapter = viewAdapter
+        binding.recognitionResults.itemAnimator = null
+        recognitionViewModel.recognitionList.observe(this.requireActivity(),
+            Observer {
+                viewAdapter.submitList(it)
+            }
+        )
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this.requireContext())
 
         cameraProviderFuture.addListener({

@@ -3,14 +3,15 @@ package com.example.foodrecommendation.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.paris.utils.setPaddingBottom
 import com.example.foodrecommendation.R
+import com.example.foodrecommendation.databinding.RecyclerViewItemBinding
 import com.example.foodrecommendation.model.FoodViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
@@ -20,16 +21,18 @@ class VerticalListAdapter(
     private val foodViewModel: FoodViewModel,
     private val navController: NavController
 ) : RecyclerView.Adapter<VerticalListAdapter.FoodVerticalListViewHolder>() {
-    class FoodVerticalListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.rvItemText)
-        val imageView: ImageView = view.findViewById(R.id.rvItemImage)
-        val itemOrigin: TextView = view.findViewById(R.id.rvItemOrigin)
+
+    class FoodVerticalListViewHolder(binding: RecyclerViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val root = binding.root
+        val textView: TextView = binding.rvItemText
+        val imageView: ImageView = binding.rvItemImage
+        val itemOrigin: TextView = binding.rvItemOrigin
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodVerticalListViewHolder {
-        return FoodVerticalListViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
-        )
+        val inflater = LayoutInflater.from(context)
+        val binding = RecyclerViewItemBinding.inflate(inflater, parent, false)
+        return FoodVerticalListViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FoodVerticalListViewHolder, position: Int) {
@@ -46,6 +49,10 @@ class VerticalListAdapter(
             foodViewModel.foodIndex = item
             navController.navigate(R.id.foodDetailFragment)
         }
+        if (position == itemCount - 1){
+            holder.root.setPaddingBottom(80)
+        }
+        else holder.root.setPaddingBottom(0)
     }
 
     override fun getItemCount() = foodViewModel.foodList.size
