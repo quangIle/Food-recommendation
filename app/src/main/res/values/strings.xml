@@ -117,4 +117,9 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="welcomeToApp">Welcome To FeedMe</string>
+    <string name="announceLogin">Login To Start</string>
+    <string name="facebook_application_id">602045684291856</string>
+    <string name="fb_login_protocol_scheme">fb602045684291856</string>
+
 </resources>
