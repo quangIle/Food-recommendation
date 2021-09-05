@@ -45,4 +45,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.foodrecommendation.fragment.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.foodrecommendation.fragment.CameraFragment"
+        android:label="CameraFragment" />
 </navigation>
