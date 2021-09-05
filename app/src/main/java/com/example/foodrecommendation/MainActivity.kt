@@ -2,22 +2,21 @@ package com.example.foodrecommendation
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColorInt
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.foodrecommendation.model.LoginViewModel
-import com.firebase.ui.auth.AuthMethodPickerLayout
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import np.com.susanthapa.curved_bottom_navigation.CbnMenuItem
 import np.com.susanthapa.curved_bottom_navigation.CurvedBottomNavigationView
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setMenuItems(menuItems, 0)
         bottomNavigation.setupWithNavController(navController)
+        changeBottomNavigationColor()
+
     }
 
     private fun onSuccess() {
@@ -100,8 +101,8 @@ class MainActivity : AppCompatActivity() {
         loginViewModel.authenticationState.observe(this, { authenticationState ->
             Log.d(TAG, authenticationState.toString())
             when (authenticationState) {
-                        LoginViewModel.AuthenticationState.AUTHENTICATED -> {
-                        Log.d(
+                LoginViewModel.AuthenticationState.AUTHENTICATED -> {
+                    Log.d(
                         TAG,
                         "Already signed in! Current user token: ${FirebaseAuth.getInstance().currentUser?.displayName}"
                     )
@@ -141,4 +142,22 @@ class MainActivity : AppCompatActivity() {
         )
     )
 
+    private fun changeBottomNavigationColor()
+    {
+        val flag = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (flag) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                bottomNavigation.selectedColor = ("#FFFFFF").toColorInt()
+                bottomNavigation.navBackgroundColor = ("#000000").toColorInt()
+                bottomNavigation.fabBackgroundColor = ("#000000").toColorInt()
+                Log.d("Q", "Dark")
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {
+                bottomNavigation.selectedColor = ("#000000").toColorInt()
+                bottomNavigation.navBackgroundColor = ("#FFFFFF").toColorInt()
+                bottomNavigation.fabBackgroundColor = ("#FFFFFF").toColorInt()
+                Log.d("Q", "Light")
+            }
+        }
+    }
 }
