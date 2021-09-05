@@ -52,7 +52,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/spaghetti_0"
+            tools:src="@drawable/spaghetti_0"
             android:scaleType="centerCrop"
             android:background="#D0E37F"
             android:id="@+id/rvItemImage" />
