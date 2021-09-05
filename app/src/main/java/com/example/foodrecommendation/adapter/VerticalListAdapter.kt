@@ -1,7 +1,6 @@
 package com.example.foodrecommendation.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -45,7 +44,6 @@ class VerticalListAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            Log.d("Quang", "item click")
             foodViewModel.foodIndex = item
             navController.navigate(R.id.foodDetailFragment)
         }

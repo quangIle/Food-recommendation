@@ -18,12 +18,14 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.foodrecommendation.adapter.RecognitionAdapter
 import com.example.foodrecommendation.databinding.FragmentCameraBinding
 import com.example.foodrecommendation.ml.FoodModel
+import com.example.foodrecommendation.model.FoodViewModel
 import com.example.foodrecommendation.model.Recognition
 import com.example.foodrecommendation.model.RecognitionListViewModel
 import com.example.foodrecommendation.model.YuvToRgbConverter
@@ -45,7 +47,7 @@ typealias RecognitionListener = (recognition: List<Recognition>) -> Unit
 class CameraFragment : Fragment() {
     private lateinit var binding: FragmentCameraBinding
     private val recognitionViewModel: RecognitionListViewModel by viewModels()
-
+    private val foodViewModel by activityViewModels<FoodViewModel>()
     // CameraX variables
     private lateinit var preview: Preview // Preview use case, fast, responsive view of the camera
     private lateinit var imageAnalyzer: ImageAnalysis // Analysis use case, for running ML code
@@ -127,7 +129,7 @@ class CameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        val viewAdapter = RecognitionAdapter(this.requireContext())
+        val viewAdapter = RecognitionAdapter(this.requireContext(), foodViewModel, findNavController())
         binding.recognitionResults.adapter = viewAdapter
         binding.recognitionResults.itemAnimator = null
         recognitionViewModel.recognitionList.observe(this.requireActivity(),

@@ -1,4 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -14,16 +15,23 @@
         android:background="#8000"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/recognitionName"
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/foodChip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:focusable="true"
             android:layout_weight="2"
-            android:padding="8dp"
+            android:background="@color/fui_transparent"
+            android:backgroundTint="@color/fui_transparent"
             android:text="@{recognitionItem.name}"
-            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            tools:text="Orange" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:chipStrokeColor="@color/white"
+            app:chipStrokeWidth="2dp"
+            android:textAlignment="center"
+            tools:text="testing" />
 
         <TextView
             android:id="@+id/recognitionProb"
@@ -33,8 +41,8 @@
             android:gravity="end"
             android:padding="8dp"
             android:text="@{recognitionItem.probabilityString}"
-            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/white"
             tools:text="99%" />
 
     </LinearLayout>
