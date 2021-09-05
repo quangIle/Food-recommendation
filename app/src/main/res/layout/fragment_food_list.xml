@@ -7,38 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.FoodListFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/insta"
-        android:orientation="horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="0"
-            android:backgroundTint="@color/insta"
-            android:scaleType="fitCenter"
-            android:src="@drawable/search_icon" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="4"
-            android:hint="Search your food" />
-
-        <Spinner
-            android:id="@+id/province"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:entries="@array/province_location"
-            android:prompt="@string/choose_province" />
-    </LinearLayout>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +15,10 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalFoodList"/>
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
