@@ -138,6 +138,11 @@ class MainActivity : AppCompatActivity() {
             R.id.verticalListFragment // optional if you use Jetpack Navigation
         ),
         CbnMenuItem(
+            R.drawable.ic_camera,
+            R.drawable.avd_camera,
+            R.id.cameraFragment
+        ),
+        CbnMenuItem(
             R.drawable.ic_settings,
             R.drawable.avd_settings,
             R.id.settingsFragment
