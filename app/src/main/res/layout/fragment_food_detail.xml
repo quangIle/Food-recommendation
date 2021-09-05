@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvOrigin"
             android:text="Origin"
-            android:fontFamily="@font/nanumgothic_regular"
+            android:fontFamily="@font/patrickhand_regular"
             android:textSize="40sp"
             android:gravity="center"/>
 

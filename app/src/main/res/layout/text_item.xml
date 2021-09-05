@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:fontFamily="@font/nanumgothic_regular"
+            android:fontFamily="@font/patrickhand_regular"
             android:id="@+id/expandable_text"/>
 
         <ImageButton
