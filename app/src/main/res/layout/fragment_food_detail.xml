@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="3dp"
+    android:padding="20dp"
     android:background="@color/white"
     tools:context=".fragment.FoodDetailFragment">
 
@@ -22,10 +22,10 @@
             android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="400dp"
-                android:layout_height="400dp"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
                 android:layout_gravity="center_horizontal"
-                tools:src="@drawable/spaghetti_0"
+                android:src="@drawable/spaghetti_0"
                 android:scaleType="centerCrop"
                 android:background="#D0E37F"
                 android:id="@+id/ivFoodImage" />
@@ -37,26 +37,26 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvFoodName"
             android:textSize="80sp"
-            android:fontFamily="@font/dejavu_bold"
+            android:fontFamily="@font/pacifico_regular"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            tools:text="Food Name"
+            android:textColor="#f28038"
+            android:text="Food"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvOrigin"
-            tools:text="Origin"
-            android:fontFamily="@font/dejavu_bold"
+            android:text="Origin"
+            android:fontFamily="@font/nanumgothic_regular"
             android:textSize="40sp"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Nguyên Liệu"
-            android:fontFamily="@font/dejavu_bold"
+            android:text="Nguyên Liệu"
+            android:fontFamily="@font/roboto_bold"
             android:textSize="50sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -72,9 +72,10 @@
             android:layout_height="wrap_content"
             android:textSize="50sp"
             android:textStyle="bold"
+            android:layout_marginTop="10sp"
             android:textColor="@color/black"
             android:text="Hướng Dẫn"
-            android:fontFamily="@font/dejavu_bold"
+            android:fontFamily="@font/roboto_bold"
             android:layout_gravity="center_horizontal"/>
 
         <!--Embedded youtube video-->
@@ -89,17 +90,17 @@
         <include
             android:id="@+id/tvCookSteps"
             layout="@layout/text_item"/>
-        
-        <Button
-            android:id="@+id/btMap"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
+
+        <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find Nearby"
-            android:fontFamily="@font/dejavu_bold"
-            android:textSize="30sp"
-            android:textAllCaps="false"
-            android:background="@drawable/btn_background"/>
+            android:src="@drawable/icon_map_1_50x50"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/btn_map_background"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btMap"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
