@@ -1,9 +1,9 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory app:title="Account">
+    <PreferenceCategory app:title="@string/accountTitle">
 
         <Preference
             app:key="userLogout"
-            app:title="Logout"/>
+            app:title="@string/logoutText"/>
 
 
     </PreferenceCategory>

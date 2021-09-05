@@ -104,22 +104,24 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header">Tin nhắn</string>
+    <string name="sync_header">Đồng bộ</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title">Chữ ký</string>
+    <string name="reply_title">Trả lời mặc định</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title">Đồng bộ hoá email định kì</string>
+    <string name="attachment_title">Tải xuống tệp</string>
+    <string name="attachment_summary_on"> Tự động tải xuống tệp đính kèm cho các email
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off">Chỉ tải xuống tệp khi có yêu cầu thủ công</string>
     <string name="welcomeToApp">Welcome To FeedMe</string>
     <string name="announceLogin">Login To Start</string>
     <string name="facebook_application_id">602045684291856</string>
     <string name="fb_login_protocol_scheme">fb602045684291856</string>
+    <string name="logoutText">Đăng xuất</string>
+    <string name="accountTitle">Tài khoản</string>
 
 </resources>
