@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class RecognitionListViewModel : ViewModel() {
+class CameraViewModel : ViewModel() {
 
     // This is a LiveData field. Choosing this structure because the whole list tend to be updated
     // at once in ML and not individual elements. Updating this once for the entire list makes

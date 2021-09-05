@@ -13,7 +13,7 @@ import com.example.foodrecommendation.model.FoodViewModel
 import com.example.foodrecommendation.model.HistoryViewModel
 import com.example.foodrecommendation.model.Recognition
 
-class RecognitionAdapter(
+class CameraResultAdapter(
     private val ctx: Context,
     private val foodViewModel: FoodViewModel,
     private val historyViewModel: HistoryViewModel,

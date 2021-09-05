@@ -22,7 +22,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.foodrecommendation.adapter.RecognitionAdapter
+import com.example.foodrecommendation.adapter.CameraResultAdapter
 import com.example.foodrecommendation.databinding.FragmentCameraBinding
 import com.example.foodrecommendation.ml.FoodModel
 import com.example.foodrecommendation.model.*
@@ -43,7 +43,7 @@ typealias RecognitionListener = (recognition: List<Recognition>) -> Unit
 
 class CameraFragment : Fragment() {
     private lateinit var binding: FragmentCameraBinding
-    private val recognitionViewModel: RecognitionListViewModel by viewModels()
+    private val recognitionViewModel: CameraViewModel by viewModels()
     private val foodViewModel by activityViewModels<FoodViewModel>()
     private val historyViewModel by activityViewModels<HistoryViewModel>()
 
@@ -127,7 +127,7 @@ class CameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        val viewAdapter = RecognitionAdapter(
+        val viewAdapter = CameraResultAdapter(
             this.requireContext(),
             foodViewModel,
             historyViewModel,
