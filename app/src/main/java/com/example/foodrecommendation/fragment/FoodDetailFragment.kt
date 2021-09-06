@@ -12,6 +12,7 @@ import com.example.foodrecommendation.R
 import com.example.foodrecommendation.databinding.FragmentFoodDetailBinding
 import com.example.foodrecommendation.model.BrowserViewModel
 import com.example.foodrecommendation.model.FoodViewModel
+import com.example.foodrecommendation.model.MapViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.squareup.picasso.Picasso
@@ -22,10 +23,11 @@ class FoodDetailFragment : Fragment() {
     private lateinit var binding: FragmentFoodDetailBinding
     private val foodViewModel by activityViewModels<FoodViewModel>()
     private val browserViewModel by viewModels<BrowserViewModel>()
+    private val mapViewModel by activityViewModels<MapViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        browserViewModel.getReady(this)
+        //browserViewModel.getReady(this)
     }
 
     override fun onCreateView(
@@ -42,10 +44,13 @@ class FoodDetailFragment : Fragment() {
 
         foodViewModel.loadFoodMetaData()
 
+        mapViewModel.foodName = foodViewModel.foodIndex?.name.toString()
+
         binding.mapButton.setOnClickListener {
-            browserViewModel.launchBrowser(foodViewModel.foodIndex?.name.toString())
+            //browserViewModel.launchBrowser(foodViewModel.foodIndex?.name.toString())
+            findNavController().navigate(R.id.action_foodDetailFragment_to_foodMapFragment)
         }
-        binding.cancelButton.setOnClickListener{
+        binding.cancelButton.setOnClickListener {
             findNavController().navigateUp()
         }
         return binding.root
@@ -91,8 +96,8 @@ class FoodDetailFragment : Fragment() {
         Picasso.get().load(foodIndex.imageUrl).into(binding.ivFoodImage)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDetach() {
+        super.onDetach()
         this.requireActivity()
             .findViewById<CurvedBottomNavigationView>(R.id.bottom_navigation)
             .visibility = View.VISIBLE

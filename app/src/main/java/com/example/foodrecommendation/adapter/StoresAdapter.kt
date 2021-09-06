@@ -43,14 +43,12 @@ class StoresAdapter(
         val store = storeList[position]
         holder.nameTextView.text = store.name
         holder.vicinityTextView.text = store.vicinity
-        var status: String
-        var rate: String
-        if (store.opening.contains("true")){
-            status = "Opening"
+        val status: String = if (store.opening.contains("true")){
+            "Opening"
         } else {
-            status = "Closed"
+            "Closed"
         }
-        rate = "Rating: " + store.rating + "/5" + "  (" + store.numOfVoter + " voters)"
+        val rate: String = "Rating: " + store.rating + "/5" + "  (" + store.numOfVoter + " voters)"
         holder.openingTextView.text = status
         holder.ratingTextView.text = rate
 

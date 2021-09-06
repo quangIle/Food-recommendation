@@ -50,7 +50,7 @@ class VerticalListAdapter(
                 historyViewModel.writeUserHistory(item.name.toString())
             }
             foodViewModel.foodIndex = item
-            navController.navigate(R.id.foodDetailFragment)
+            navController.navigate(R.id.action_verticalListFragment_to_foodDetailFragment)
         }
         if (position == itemCount - 1){
             holder.root.setPaddingBottom(80)

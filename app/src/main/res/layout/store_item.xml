@@ -13,14 +13,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/store_info_layout"
         android:background="@drawable/my_custom_border"
-        android:padding="6dp"
-        android:layout_margin="3dp">
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="15dp"
+        android:layout_marginVertical="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="7dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_name"
             android:text="Bún bò Hồ Ếch - Kim Anh"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"

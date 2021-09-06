@@ -6,7 +6,10 @@ import androidx.fragment.app.FragmentActivity
 import com.example.foodrecommendation.databinding.FragmentFoodMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.DirectionsApi
 import com.google.maps.GeoApiContext
 import com.google.maps.android.PolyUtil
@@ -24,7 +27,6 @@ class getDirection(var mMap: GoogleMap, var apiKey: String, var activity: Fragme
         //binding.btnDirection.visibility = View.GONE
         //binding.btbBack.visibility = View.GONE
         binding.storeDetail.visibility = View.GONE
-        binding.btnExit.visibility = View.GONE
 
         val apiRequest = DirectionsApi.newRequest(getGeoContext())
         apiRequest.origin(com.google.maps.model.LatLng(start.latitude, start.longitude))
@@ -57,11 +59,8 @@ class getDirection(var mMap: GoogleMap, var apiKey: String, var activity: Fragme
             MarkerOptions()
                 .position(start)
                 .title(result.routes[0].legs[0].startAddress))
-        mMap.moveCamera(
-            CameraUpdateFactory.newCameraPosition(
-                CameraPosition(start,
-                    18F,0F,0F)
-            ))
+        mMap.animateCamera(CameraUpdateFactory
+            .newLatLngZoom(LatLng(start.latitude, start.longitude), 18f))
         binding.btnStop.visibility = View.VISIBLE
         binding.btnStop.setOnClickListener {
             polyline.remove()
