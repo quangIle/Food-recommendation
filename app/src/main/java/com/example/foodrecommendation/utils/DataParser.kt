@@ -13,6 +13,7 @@ class DataParser {
         var vicinity = "--NA--"
         var opening = ""
         var numVoter = "--NA--"
+        var compound_code = ""
         var rating = "--NA--"
         var latitude = ""
         var longitude = ""
@@ -30,14 +31,21 @@ class DataParser {
             if (!googlePlaceJson.isNull("user_ratings_total")){
                 numVoter = googlePlaceJson.getString("user_ratings_total")
             }
+            compound_code =
+                googlePlaceJson.getJSONObject("plus_code").getString("compound_code")
             opening =
                 googlePlaceJson.getJSONObject("opening_hours").getString("open_now")
             latitude =
                 googlePlaceJson.getJSONObject("geometry").getJSONObject("location").getString("lat")
             longitude =
                 googlePlaceJson.getJSONObject("geometry").getJSONObject("location").getString("lng")
+            var city_name: String = ""
+            if (!compound_code.isNullOrEmpty()) {
+                city_name = compound_code.removeRange(0, compound_code.indexOf(' '))
+
+            }
             googlePlaceMap.put("place_name",placeName)
-            googlePlaceMap.put("vicinity", vicinity)
+            googlePlaceMap.put("vicinity", vicinity + ", " + city_name)
             googlePlaceMap.put("rating", rating)
             googlePlaceMap.put("numVoter", numVoter)
             googlePlaceMap.put("opening", opening)
