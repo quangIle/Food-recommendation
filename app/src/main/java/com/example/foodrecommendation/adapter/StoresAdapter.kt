@@ -1,5 +1,6 @@
 package com.example.foodrecommendation.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,7 @@ class StoresAdapter(
         return StoreViewHolder(view)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
         val store = storeList[position]
         holder.nameTextView.text = store.name
@@ -44,7 +46,7 @@ class StoresAdapter(
         var status: String
         var rate: String
         if (store.opening.contains("true")){
-            status = "Open"
+            status = "Opening"
         } else {
             status = "Closed"
         }
@@ -60,6 +62,8 @@ class StoresAdapter(
             binding.storeDetailLoca.text = store.vicinity
             binding.storeDetailRating.text = rate
             binding.storeDetailOpeninghour.text = status
+
+
 
             mMap.animateCamera(CameraUpdateFactory
                 .newLatLngZoom(LatLng(store.latlng.lat, store.latlng.lng), 16f))

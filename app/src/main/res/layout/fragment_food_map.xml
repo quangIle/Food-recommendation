@@ -65,7 +65,7 @@
             android:background="@color/white"
             android:visibility="gone"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="200dp"
@@ -73,10 +73,11 @@
             android:id="@+id/btn_exit"
             android:text="Exit"
             android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:backgroundTint="#35B64F"
             android:visibility="gone"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="5dp"
@@ -94,7 +95,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="2dp"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/my_custom_border"
+            android:padding="3dp"
             android:visibility="gone">
             <TextView
                 android:layout_width="wrap_content"
