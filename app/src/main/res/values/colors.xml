@@ -33,5 +33,6 @@
     <color name="iconsD">#FFFFFF</color>
     <color name="dividerD">#BDBDBD</color>
 
-
+    <color name="green">#00ff00</color>
+    <color name="red">#FF0000</color>
 </resources>

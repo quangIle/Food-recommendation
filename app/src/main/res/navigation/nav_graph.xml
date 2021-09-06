@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/verticalListFragment">
+    app:startDestination="@id/foodMapFragment">
 
     <fragment
         android:id="@+id/foodDetailFragment"
@@ -38,4 +38,9 @@
         android:id="@+id/historyFragment"
         android:name="com.example.foodrecommendation.fragment.HistoryFragment"
         android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/foodMapFragment"
+        android:name="com.example.foodrecommendation.fragment.FoodMapFragment"
+        android:label="fragment_food_map"
+        tools:layout="@layout/fragment_food_map" />
 </navigation>
