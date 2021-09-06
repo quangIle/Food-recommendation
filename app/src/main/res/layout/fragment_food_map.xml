@@ -40,7 +40,7 @@
                 android:layout_gravity="bottom"
                 android:text="Find Restaurants"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#35B64F"
+                android:backgroundTint="@color/primary"
                 android:textStyle="bold"/>
         </LinearLayout>
 
@@ -50,7 +50,7 @@
             android:id="@+id/fab"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="112dp"
-            android:backgroundTint="#35B64F"
+            android:backgroundTint="@color/primary_light"
             android:src="@drawable/ic_location"
             app:layout_constraintTop_toBottomOf= "@id/search_layout"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -74,7 +74,7 @@
             android:text="Exit"
             android:layout_marginRight="8dp"
             android:layout_marginLeft="8dp"
-            android:backgroundTint="#35B64F"
+            android:backgroundTint="@color/primary"
             android:visibility="gone"/>
         <Button
             android:layout_width="match_parent"
@@ -85,7 +85,7 @@
             android:id="@+id/btn_stop"
             android:text="Stop"
             android:layout_marginRight="8dp"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/colorAccent"
             android:visibility="gone"/>
 
         <LinearLayout
@@ -138,7 +138,7 @@
                     android:text="back"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#35B64F"
+                    android:backgroundTint="@color/primary"
                     android:id="@+id/btb_back"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                     android:text="Direction"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#35B64F"
+                    android:backgroundTint="@color/primary"
                     android:id="@+id/btn_direction"/>
 
             </LinearLayout>
