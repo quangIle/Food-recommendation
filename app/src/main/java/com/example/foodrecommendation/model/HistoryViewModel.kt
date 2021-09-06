@@ -91,21 +91,21 @@ class HistoryViewModel : ViewModel() {
             if (it.date.dayOfYear == LocalDateTime.now().dayOfYear - 1)
                 it.name
             else
-                null
+                "null"
         }.toMutableSet()
         yesterdayList.remove("null")
         weekList = historyList.map { it ->
             if (it.date.dayOfYear < LocalDateTime.now().dayOfYear - 1 && it.date.dayOfYear > LocalDateTime.now().dayOfYear - 8)
                 it.name
             else
-                null
+                "null"
         }.toMutableSet()
         weekList.remove("null")
         olderList = historyList.map { it ->
             if (it.date.dayOfYear < LocalDateTime.now().dayOfYear - 7)
                 it.name
             else
-                null
+                "null"
         }.toMutableSet()
         olderList.remove("null")
         _historyState.value = true

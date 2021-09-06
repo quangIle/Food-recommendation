@@ -147,7 +147,7 @@ class FoodMapFragment : Fragment(), OnMapReadyCallback {
             .icon(
                 BitmapDescriptorFactory.fromBitmap(
                     Bitmap.createScaledBitmap(
-                        resources.getDrawable(R.drawable.hellokitty).toBitmap(), 150, 150, false
+                        resources.getDrawable(R.drawable.logotest).toBitmap(), 150, 150, false
                     )
                 )
             )
